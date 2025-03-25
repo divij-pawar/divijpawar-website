@@ -114,13 +114,12 @@ function App() {
               Graduate student of CS @ University of Massachusetts, Lowell
             </h3>
             <p className="text-gray-300">
-              Experienced in deep learning and software development, with a
-              strong foundation in machine learning, large language mod- els,
-              and scalable system design. Developed microservices for
-              high-frequency trading, optimized PostgreSQL performance, and
-              integrated real-time data streaming. Proficient in Python,
-              PyTorch, TensorFlow, and NLP techniques. Applied GPT-2 and T5
-              models for food classification and text generation.
+              Currently in my 3rd semester at UMass Lowell. These are the 3 things I am currently working on:
+              <ul>
+                <li>Trump of the day - Dashboard for President Donald Trump's presidency.</li>
+                <li>Nutrition Label analysis using LLM</li>
+                <li>Finding effects of drugs on COVID outcome using causal inference method </li>
+              </ul>
             </p>
           </div>
         </section>
@@ -310,12 +309,13 @@ function App() {
           </div>
           <div className="card p-6">
             <p className="text-gray-300 leading-relaxed">
-              I'm a passionate software engineer with over 5 years of experience
-              in full-stack development. I specialize in building scalable web
-              applications and microservices architecture. When I'm not coding,
-              you can find me contributing to open-source projects, writing
-              technical blog posts, or mentoring aspiring developers. I believe
-              in clean code, test-driven development, and continuous learning.
+            Experienced in deep learning and software development, with a
+              strong foundation in machine learning, large language mod- els,
+              and scalable system design. Developed microservices for
+              high-frequency trading, optimized PostgreSQL performance, and
+              integrated real-time data streaming. Proficient in Python,
+              PyTorch, TensorFlow, and NLP techniques. Applied GPT-2 and T5
+              models for food classification and text generation.
             </p>
           </div>
         </section>
