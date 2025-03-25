@@ -328,12 +328,12 @@ function App() {
           </div>
           <div className="card p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <a href="mailto:your.email@example.com" className="link-button">
+              <a href="mailto:workdivij@gmail.com" className="link-button">
                 <Mail className="w-5 h-5 mr-2" />
                 Email Me
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/divijpawar"
                 className="bg-indigo-900 text-indigo-200 flex items-center justify-center p-4 rounded-lg hover:bg-indigo-800 transition-colors"
               >
                 <Linkedin className="w-5 h-5 mr-2" />
@@ -346,7 +346,7 @@ function App() {
 
       <footer className="bg-gray-800 text-gray-400 py-8">
         <div className="container mx-auto px-6 text-center">
-          <p>© 2024 John Doe. All rights reserved.</p>
+          <p>© 2024 Divij Pawar. All rights reserved.</p>
         </div>
       </footer>
     </div>
