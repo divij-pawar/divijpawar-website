@@ -42,9 +42,7 @@ function App() {
               src="dp.jpg"
               alt="Profile"
               className={`rounded-full border-2 border-indigo-500 shadow-xl transition-all duration-500 ${
-                isScrolled 
-                  ? "w-20 h-20 mr-4" 
-                  : "w-40 h-40 mt-10 mb-5"
+                isScrolled ? "w-20 h-20 mr-4" : "w-40 h-40 mt-10 mb-5"
               }`}
             />
             <div className={`text-center ${isScrolled ? "text-left" : ""}`}>
@@ -94,7 +92,7 @@ function App() {
         <section className="mb-16 relative z-10 mt-32 sm:mt-16">
           <div className="section-title">
             <Coffee className="w-6 h-6 text-indigo-400 mr-2" />
-            <h2>
+            <h3>
               Hi! I am currently working on{" "}
               <a
                 href="https://www.trumpoftheday.com"
@@ -106,21 +104,33 @@ function App() {
                 }}
               >
                 trumpoftheday.com
-              </a>
-            </h2>
+              </a>{" "}
+              and LLMs.
+            </h3>
           </div>
           <div className="card p-6">
             <h3 className="text-xl font-semibold mb-2 text-indigo-300">
-              Graduate student of CS @ University of Massachusetts, Lowell
+              Graduate Student, Computer Science @ University of Massachusetts
+              Lowell
             </h3>
             <p className="text-gray-300">
-              Currently in my 3rd semester at UMass Lowell. These are the 3 things I am currently working on:
-              <ul>
-                <li>Trump of the day - Dashboard for President Donald Trump's presidency.</li>
-                <li>Nutrition Label analysis using LLM</li>
-                <li>Finding effects of drugs on COVID outcome using causal inference method </li>
-              </ul>
+              Currently in my third semester at UMass Lowell, working on the
+              following projects:
             </p>
+            <ul className="text-gray-300 list-disc list-inside">
+              <li>
+                <strong>Trump of the Day</strong> – A news dashboard analyzing
+                President Donald Trump's presidency.
+              </li>
+              <li>
+                <strong>Nutrition Label Analysis with LLM</strong> – Using AI to
+                extract and interpret nutritional information.
+              </li>
+              <li>
+                <strong>Causal Inference for COVID-19</strong> – Investigating
+                the effects of drugs on COVID-19 outcomes.
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -163,31 +173,39 @@ function App() {
               <h3 className="text-xl font-semibold text-indigo-300">
                 Master of Computer Science
               </h3>
-              <p className="text-indigo-400">Stanford University • 2018-2020</p>
+              <p className="text-indigo-400">
+                University of Massachusetts, Lowell • 2024-2025
+              </p>
               <p className="mt-2 text-gray-300">
-                Specialized in Artificial Intelligence and Machine Learning
+                Coursework: Deep Learning: Large Language Models, and Large
+                Vision Models, Machine Learning, Algorithms, Computer Network
+                and Forensics, Internet of Things
               </p>
             </div>
             <div>
               <h3 className="text-xl font-semibold text-indigo-300">
-                Bachelor of Computer Science
+                Bachelor of Engineering in Electronics and Telecommunication
+                Engineering
               </h3>
-              <p className="text-indigo-400">MIT • 2014-2018</p>
+              <p className="text-indigo-400">
+                University of Mumbai, Mumbai • 2016-2021
+              </p>
               <p className="mt-2 text-gray-300">
-                Major in Computer Science, Minor in Mathematics
+                Coursework: Image Processing and Machine Vision, Database
+                Management Systems, Digital Signal Processing, Digital System
+                Design
               </p>
             </div>
           </div>
         </section>
 
-
-                {/* Experience */}
-                <section className="mb-16">
+        {/* Experience */}
+        <section className="mb-16">
           <div className="section-title">
             <Briefcase className="w-6 h-6 text-indigo-400 mr-2" />
             <h2>Work Experience</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-` gap-6">
             {work_experience.map((experience) => (
               <div key={experience.title} className="card p-6">
                 <h3 className="text-xl font-semibold mb-2 text-indigo-300">
@@ -213,10 +231,10 @@ function App() {
             <h2>Skills</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {["Frontend", "Backend", "DevOps"].map((category) => (
+            {["Frontend", "Backend", "DevOps", "DataAndAI"].map((category) => (
               <div key={category} className="card p-6">
                 <h3 className="text-xl font-semibold mb-4 text-indigo-300">
-                  {category}
+                  {category === "DataAndAI" ? "Data & AI" : category}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {getSkills(category).map((skill) => (
@@ -235,7 +253,7 @@ function App() {
             <BookMarked className="w-6 h-6 text-indigo-400 mr-2" />
             <h2>Publications</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
             {publications.map((pub) => (
               <div key={pub.title} className="card p-6">
                 <h3 className="text-xl font-semibold mb-2 text-indigo-300">
@@ -258,48 +276,56 @@ function App() {
 
         {/* GitHub Stats */}
         <section className="mb-16 px-4 py-8 bg-gradient-to-r from-indigo-600 to-indigo-800 rounded-lg shadow-lg">
-  <div className="section-title flex items-center mb-8">
-    <Trophy className="w-8 h-8 text-indigo-100 mr-4" />
-    <h2 className="text-3xl font-semibold text-white">GitHub Stats</h2>
-  </div>
+          <div className="section-title flex items-center mb-8">
+            <Trophy className="w-8 h-8 text-indigo-100 mr-4" />
+            <h2 className="text-3xl font-semibold text-white">GitHub Stats</h2>
+          </div>
 
-  <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-    {/* Text Section */}
-    <div className="flex flex-col items-start text-white w-full md:w-1/2">
-      <div className="text-lg mb-4">
-        Here are some statistics from my <a href="https://www.github.com/divij-pawar" target="_blank" rel="noopener noreferrer"
-                style={{
-                  textDecoration: "underline",
-                  fontWeight: "bold",
-                }}>Github profile</a>. Feel free to explore the contributions, repositories, and stars I've received!
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="text-center">
-          <div className="text-3xl font-bold text-indigo-400">350+</div>
-          <div className="text-gray-300">Public Contributions</div>
-        </div>
-        <div className="text-center">
-          <div className="text-3xl font-bold text-indigo-400">40+</div>
-          <div className="text-gray-300">Public Repositories</div>
-        </div>
-        <div className="text-center">
-          <div className="text-3xl font-bold text-indigo-400">7</div>
-          <div className="text-gray-300">Stars Received</div>
-        </div>
-      </div>
-    </div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            {/* Text Section */}
+            <div className="flex flex-col items-start text-white w-full md:w-1/2">
+              <div className="text-lg mb-4">
+                Here are some statistics from my{" "}
+                <a
+                  href="https://www.github.com/divij-pawar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    textDecoration: "underline",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Github profile
+                </a>
+                . Feel free to explore the contributions, repositories, and
+                stars I've received!
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-indigo-400">350+</div>
+                  <div className="text-gray-300">Public Contributions</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-indigo-400">40+</div>
+                  <div className="text-gray-300">Public Repositories</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-indigo-400">7</div>
+                  <div className="text-gray-300">Stars Received</div>
+                </div>
+              </div>
+            </div>
 
-    {/* Image Card */}
-    <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md w-full md:w-1/2">
-      <img
-        src="https://github-readme-stats.vercel.app/api?username=divij-pawar&show_icons=true&theme=shadow_blue&show=prs_merged,prs_merged_percentage"
-        alt="GitHub Stats"
-        className="w-full h-auto rounded-lg shadow-lg"
-      />
-    </div>
-  </div>
-</section>
-
+            {/* Image Card */}
+            <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md w-full md:w-1/2">
+              <img
+                src="https://github-readme-stats.vercel.app/api?username=divij-pawar&show_icons=true&theme=shadow_blue&show=prs_merged,prs_merged_percentage"
+                alt="GitHub Stats"
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </section>
 
         {/* Bio */}
         <section className="mb-16">
@@ -309,7 +335,7 @@ function App() {
           </div>
           <div className="card p-6">
             <p className="text-gray-300 leading-relaxed">
-            Experienced in deep learning and software development, with a
+              Experienced in deep learning and software development, with a
               strong foundation in machine learning, large language mod- els,
               and scalable system design. Developed microservices for
               high-frequency trading, optimized PostgreSQL performance, and
@@ -355,90 +381,133 @@ function App() {
 
 function getSkills(category: string) {
   const skills = {
-    Frontend: [
-      "React",
+    Languages: [
+      "Python",
+      "C",
+      "C++",
+      "JavaScript",
+      "Java",
       "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "Redux",
-      "HTML5/CSS3",
+      "SQL",
+      "Bash",
     ],
+    Frontend: ["React", "Next.js", "Vue.js", "HTML", "CSS"],
     Backend: [
       "Node.js",
-      "Python",
+      "Django",
       "PostgreSQL",
-      "MongoDB",
-      "GraphQL",
+      "MySQL",
+      "PL/SQL",
       "REST APIs",
+      "GraphQL",
     ],
-    DevOps: ["AWS", "Docker", "Kubernetes", "CI/CD", "Git", "Linux"],
+    DevOps: [
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "Jenkins",
+      "CI/CD",
+      "Git",
+      "Linux",
+      "Ansible",
+    ],
+    DataAndAI: [
+      "PyTorch",
+      "TensorFlow",
+      "Numpy",
+      "Scipy",
+      "Matplotlib",
+      "SciKit",
+      "Apache Spark",
+      "Kafka",
+    ],
+    Technologies: [
+      "Microservices",
+      "Distributed Systems",
+      "Machine Learning",
+      "Natural Language Processing",
+      "Data Engineering",
+      "ETL Processes",
+      "Data Visualization",
+      "Real-Time Data Streaming",
+      "Scalable System Design",
+      "Big Data",
+      "Artificial Intelligence",
+      "Data Modeling",
+    ],
   };
+
   return skills[category as keyof typeof skills] || [];
 }
 
 const projects = [
   {
-    title: "E-commerce Platform",
+    title: "Trump of the day",
     description:
-      "A full-stack e-commerce platform with real-time inventory management and payment processing.",
-    technologies: ["React", "Node.js", "PostgreSQL", "Redis", "AWS"],
-    link: "https://github.com/yourusername/ecommerce",
+      "Designed and developed a real-time news aggregation platform focused on Trump’s presidency, integrating automated news scraping and an AI-powered summarization system. Implemented a custom news ranking algorithm to prioritize high-quality, engaging content while minimizing redundancy. Enabled user interaction through upvotes, downvotes, and a commenting system to enhance engagement and discussion. ",
+    technologies: [
+      "React JS",
+      "Node.js",
+      "Netlify",
+      "TypeScript",
+      "PostgresQL",
+    ],
+    link: "https://trumpoftheday.com",
   },
   {
-    title: "AI Chat Application",
+    title: "Cosmic Risk Management System",
     description:
-      "Real-time chat application with AI-powered language translation and sentiment analysis.",
-    technologies: ["Next.js", "Python", "TensorFlow", "WebSocket", "Docker"],
-    link: "https://github.com/yourusername/ai-chat",
-  },
-  {
-    title: "Developer Portfolio",
-    description:
-      "A beautiful and responsive portfolio website built with modern web technologies.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    link: "https://github.com/yourusername/portfolio",
-  },
-  {
-    title: "Task Management System",
-    description:
-      "A collaborative task management system with real-time updates and team features.",
-    technologies: ["Vue.js", "Express", "MongoDB", "Socket.io"],
-    link: "https://github.com/yourusername/task-manager",
+      "FinRise Softech Pvt Ltd • Designed and developed six Python microservices to optimize trade data processing, reducing latency by 40% and improving scalability. Enhanced PostgreSQL performance for real-time trade calculations and integrated WebSockets for instant stock price updates via the Zerodha API. Automated database backups and data verification with CLI tools and shell scripts, cutting manual errors by 70%. Managed CI/CD pipelines, Docker orchestration, and Kafka-based event streaming for seamless deployment and efficient real-time data processing.",
+    technologies: [
+      "Python",
+      "C",
+      "WebSocket",
+      "Shell",
+      "Kafka",
+      "Agile",
+      "PostgresQL",
+    ],
   },
 ];
 const work_experience = [
   {
-    title: "E-commerce Platform",
+    title:
+      "Student Assistant Specialist at UMass Lowell - Office of the Registrar",
     description:
-      "A full-stack e-commerce platform with real-time inventory management and payment processing.",
-    technologies: ["React", "Node.js", "PostgreSQL", "Redis", "AWS"]
+      "Automated operational workflows by developing Python scripts and integrating VBA and Macros in Excel, enhancing efficiency and reducing manual tasks. Designed interactive dashboards and dynamic reports using Oracle PeopleSoft, OBIEE, and Tableau with advanced SQL, supporting data-driven decision-making. Streamlined ETL processes and database mana",
+    technologies: [
+      "MS Excel",
+      "VBA Scripting",
+      "Python",
+      "HTML",
+      "JS",
+      "Oracle BIEE",
+    ],
   },
   {
-    title: "AI Chat Application",
+    title: "Software Developer Engineer",
     description:
-      "Real-time chat application with AI-powered language translation and sentiment analysis.",
-    technologies: ["Next.js", "Python", "TensorFlow", "WebSocket", "Docker"]
-  }
+      "Developed six Python microservices for an Equity/Options Risk Management System, reducing trade data processing time by 40% and enhancing scalability. • Optimized database performance by refining PostgreSQL I/O operations, resulting in faster query speeds and improved real-time trade calculations. • Implemented real-time data streaming by integrating web sockets for stock price updates from the Zerodha trading platform, ensuring immediate market responsiveness. • Engineered Python CLI tools and shell scripts to automate database backups and data verification processes, reducing manual intervention and errors by 70%. • Coordinated integration efforts and managed CI/CD pipelines with Git/GitHub to facilitate seamless project deployment and cross-functional collaboration. • Administered hardware resources and orchestrated Docker containers alongside optimizing Kafka-based event streaming for effective real-time data processing.",
+    technologies: ["Python", "C", "Postgres", "Docker", "Shell", "Kafka"],
+  },
+  {
+    title: "Data Analyst Intern",
+    description:
+      "• Extracted, cleaned, and processed sales data from aggregators (Swiggy, Zomato, Shopify), enabling the generation of comprehensive sales reports that improved decision-making and forecasted inventory needs with greater accuracy, utilizing PL/SQL, Python, Tableau, and Excel. • Analyzed customer data from multiple sources to optimize outlet site selection and conduct market analysis, resulting in a 30% increase in successful openings and enhanced territory management strategies, using Python and Tableau. • Collaborated with cross-functional teams to integrate software solutions across POS, inventory, and finance systems, streamlining operational workflows and reducing processing time by 25%.",
+    technologies: ["Excel", "Python", "Tableau", "PL/SQL"],
+  },
 ];
 
 const publications = [
   {
-    title: "Advancing Deep Learning Architectures for Edge Computing",
-    authors: "John Doe, Jane Smith, Robert Johnson",
+    title: "Generative Adversarial Neural Networks: A Review",
+    authors: "Fabian Barreto, Divij Pawar, Janhavi Patil, Prince Sah",
     description:
-      "A comprehensive study on optimizing neural networks for resource-constrained devices while maintaining high accuracy.",
-    venue: "International Conference on Machine Learning (ICML)",
-    year: "2023",
-    link: "https://example.com/paper1",
-  },
-  {
-    title: "Scalable Microservices Architecture: A New Approach",
-    authors: "John Doe, Michael Brown",
-    description:
-      "Novel methodology for designing and implementing highly scalable microservices using modern cloud technologies.",
-    venue: "IEEE Software Engineering Conference",
-    year: "2022",
-    link: "https://example.com/paper2",
+      "Artificial Intelligence has subtly integrated into daily life, with Generative Adversarial Networks (GANs) enabling computers to be creative. Unlike discriminative models used for classification, GANs are generative models that learn tasks unsupervised but train using a generator-discriminator framework. Research on GANs has explored applications like synthesizing human faces, landscapes, and music. Recently, GANs have been studied for security, leveraging adversarial learning to detect attacks. Key models like GPGAN, WGAN, CGAN, CPGAN, StyleGAN, and PolyGAN are used in fields such as Natural Language Processing, Computer Vision, and Domain Transformation, driving advancements in AI-generated content.",
+    year: "2021",
+    link: "https://www.ijaresm.com/generative-adversarial-neural-networks-a-review",
+    venue:
+      "International Journal of All Research Education and Scientific Methods (IJARESM)",
   },
 ];
 
