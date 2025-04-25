@@ -455,7 +455,7 @@ const projects = [
     link: "https://trumpoftheday.com",
   },
   {
-    title: "Cosmic Risk Management System",
+    title: "Cosmic Risk Management System | Finrise Softech Pvt Ltd",
     description:
       "FinRise Softech Pvt Ltd • Designed and developed six Python microservices to optimize trade data processing, reducing latency by 40% and improving scalability. Enhanced PostgreSQL performance for real-time trade calculations and integrated WebSockets for instant stock price updates via the Zerodha API. Automated database backups and data verification with CLI tools and shell scripts, cutting manual errors by 70%. Managed CI/CD pipelines, Docker orchestration, and Kafka-based event streaming for seamless deployment and efficient real-time data processing.",
     technologies: [
@@ -472,26 +472,26 @@ const projects = [
 const work_experience = [
   {
     title:
-      "Student Assistant Specialist at UMass Lowell - Office of the Registrar",
+      "Data Analyst - System Operations and Reporting | Office of the Registrar at UMass Lowell, Lowell",
     description:
-      "Automated operational workflows by developing Python scripts and integrating VBA and Macros in Excel, enhancing efficiency and reducing manual tasks. Designed interactive dashboards and dynamic reports using Oracle PeopleSoft, OBIEE, and Tableau with advanced SQL, supporting data-driven decision-making. Streamlined ETL processes and database mana",
+      "Automated operational workflows by developing Python scripts and integrating VBA and Macros in Excel, enhancing efficiency and reducing manual tasks. Designed interactive dashboards and dynamic reports using Oracle PeopleSoft, Oracle Analytics Cloud, and Tableau with advanced SQL, supporting data-driven decision-making. Streamlined ETL processes and database mana",
     technologies: [
       "MS Excel",
       "VBA Scripting",
       "Python",
       "HTML",
       "JS",
-      "Oracle BIEE",
+      "Oracle Analytics Cloud",
     ],
   },
   {
-    title: "Software Developer Engineer",
+    title: "Software Developer Engineer | Fin Rise Softech Pvt Ltd, Mumbai",
     description:
       "Developed six Python microservices for an Equity/Options Risk Management System, reducing trade data processing time by 40% and enhancing scalability. • Optimized database performance by refining PostgreSQL I/O operations, resulting in faster query speeds and improved real-time trade calculations. • Implemented real-time data streaming by integrating web sockets for stock price updates from the Zerodha trading platform, ensuring immediate market responsiveness. • Engineered Python CLI tools and shell scripts to automate database backups and data verification processes, reducing manual intervention and errors by 70%. • Coordinated integration efforts and managed CI/CD pipelines with Git/GitHub to facilitate seamless project deployment and cross-functional collaboration. • Administered hardware resources and orchestrated Docker containers alongside optimizing Kafka-based event streaming for effective real-time data processing.",
     technologies: ["Python", "C", "Postgres", "Docker", "Shell", "Kafka"],
   },
   {
-    title: "Data Analyst Intern",
+    title: "Data Analyst Intern | Amore Gourmet Gelato, Mumbai",
     description:
       "• Extracted, cleaned, and processed sales data from aggregators (Swiggy, Zomato, Shopify), enabling the generation of comprehensive sales reports that improved decision-making and forecasted inventory needs with greater accuracy, utilizing PL/SQL, Python, Tableau, and Excel. • Analyzed customer data from multiple sources to optimize outlet site selection and conduct market analysis, resulting in a 30% increase in successful openings and enhanced territory management strategies, using Python and Tableau. • Collaborated with cross-functional teams to integrate software solutions across POS, inventory, and finance systems, streamlining operational workflows and reducing processing time by 25%.",
     technologies: ["Excel", "Python", "Tableau", "PL/SQL"],
