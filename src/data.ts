@@ -89,20 +89,6 @@ export const getSkills = (category: string): string[] => {
 
 export const projects: Project[] = [
   {
-    title: "Trump of the day",
-    description:
-      "Designed and developed a real-time news aggregation platform focused on Trump's presidency, integrating automated news scraping and an AI-powered summarization system. Implemented a custom news ranking algorithm to prioritize high-quality, engaging content while minimizing redundancy. Enabled user interaction through upvotes, downvotes, and a commenting system to enhance engagement and discussion. ",
-    technologies: [
-      "React JS",
-      "Node.js",
-      "Netlify",
-      "TypeScript",
-      "PostgresQL",
-    ],
-    link: "https://trumpoftheday.com",
-    imageUrl: "https://www.google.com/s2/favicons?sz=256&domain_url=https://trumpoftheday.com",
-  },
-  {
     title: "Cosmic Risk Management System | Finrise Softech Pvt Ltd",
     description:
       "Designed and developed six Python microservices to optimize trade data processing, reducing latency by 40% and improving scalability. Enhanced PostgreSQL performance for real-time trade calculations and integrated WebSockets for instant stock price updates via the Zerodha API. Automated database backups and data verification with CLI tools and shell scripts, cutting manual errors by 70%. Managed CI/CD pipelines, Docker orchestration, and Kafka-based event streaming for seamless deployment and efficient real-time data processing.",
@@ -125,6 +111,20 @@ export const projects: Project[] = [
     imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/mrcnn-greeny",
     customImageUrl:
       "https://raw.githubusercontent.com/divij-pawar/mrcnn-greeny/refs/heads/main/demo/1_g.gif",
+  },
+  {
+    title: "Trump of the day",
+    description:
+      "Designed and developed a real-time news aggregation platform focused on Trump's presidency, integrating automated news scraping and an AI-powered summarization system. Implemented a custom news ranking algorithm to prioritize high-quality, engaging content while minimizing redundancy. Enabled user interaction through upvotes, downvotes, and a commenting system to enhance engagement and discussion. ",
+    technologies: [
+      "React JS",
+      "Node.js",
+      "Netlify",
+      "TypeScript",
+      "PostgresQL",
+    ],
+    link: "https://trumpoftheday.com",
+    imageUrl: "https://raw.githubusercontent.com/divij-pawar/trump-of-the-day/refs/heads/main/public/snapshot.png",
   },
   {
     title: "LangChain RAG Demo",
