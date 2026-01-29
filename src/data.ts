@@ -3,6 +3,8 @@ export interface Project {
   description: string;
   technologies: string[];
   link?: string;
+  customImageUrl?: string;
+  imageUrl?: string;
 }
 
 export interface WorkExperience {
@@ -98,6 +100,7 @@ export const projects: Project[] = [
       "PostgresQL",
     ],
     link: "https://trumpoftheday.com",
+    imageUrl: "https://www.google.com/s2/favicons?sz=256&domain_url=https://trumpoftheday.com",
   },
   {
     title: "Cosmic Risk Management System | Finrise Softech Pvt Ltd",
@@ -119,6 +122,9 @@ export const projects: Project[] = [
       "This computer vision application leverages Mask R-CNN for high-precision instance segmentation to achieve a professional green screen effect. By isolating human subjects within video frames and replacing the background, the project demonstrates proficiency in deep learning architectures and real-time video processing. The implementation focuses on handling edge-case silhouettes and maintaining temporal consistency across frames, providing a robust tool for automated background removal without specialized hardware.",
     technologies: ["Python", "TensorFlow 2", "Mask R-CNN", "OpenCV"],
     link: "https://github.com/divij-pawar/mrcnn-greeny",
+    imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/mrcnn-greeny",
+    customImageUrl:
+      "https://raw.githubusercontent.com/divij-pawar/mrcnn-greeny/refs/heads/main/demo/1_g.gif",
   },
   {
     title: "LangChain RAG Demo",
@@ -133,6 +139,7 @@ export const projects: Project[] = [
       "Whoosh",
     ],
     link: "https://github.com/divij-pawar/Laangchain-rag",
+    imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/Laangchain-rag",
   },
   {
     title: "Nutrition Analysis Chatbot",
@@ -147,6 +154,7 @@ export const projects: Project[] = [
       "Transformers",
     ],
     link: "https://github.com/divij-pawar/nutr-analysis",
+    imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/nutr-analysis",
   },
   {
     title: "DB Check Utility",
@@ -154,6 +162,8 @@ export const projects: Project[] = [
       "Developed as a mission-critical CLI tool for Enterprise Risk Management Systems, this utility automates health checks and data validation across complex database environments. It performs deep-dive integrity scans to ensure consistency between ledger entries and physical quantities, significantly reducing the risk of calculation errors in financial reporting. The utility streamlines backend operations by providing developers with immediate diagnostic feedback on database health and logical schema mismatches.",
     technologies: ["Python", "SQL"],
     link: "https://github.com/divij-pawar/DB-check-utility",
+    imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/DB-check-utility",
+    customImageUrl:"https://raw.githubusercontent.com/divij-pawar/DB-check-utility/main/outputs_screenshots/mtm-unmatched.PNG"
   },
   {
     title: "News Snippet Generator",
@@ -161,6 +171,9 @@ export const projects: Project[] = [
       "This full-stack web application streamlines social media content creation by programmatically extracting metadata from news URLs to generate visual snippets. Built with a modern Next.js and TypeScript architecture, the tool parses Open Graph data and renders it into a clean, shareable image format. The project demonstrates advanced frontend capabilities, including dynamic server-side rendering, logical parsing of unstructured web metadata, and a focus on responsive, user-centric design.",
     technologies: ["TypeScript", "Next.js", "React"],
     link: "https://github.com/divij-pawar/news-snippet-gen",
+    imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/news-snippet-gen",
+    customImageUrl:
+      "https://raw.githubusercontent.com/divij-pawar/news-snippet-gen/refs/heads/main/public/example.png",
   },
 ];
 

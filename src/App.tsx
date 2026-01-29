@@ -4,14 +4,14 @@ import {
   Mail,
   Linkedin,
   ExternalLink,
-  Code2,
   BookOpen,
   Briefcase,
-  User,
   Trophy,
   Coffee,
   BookMarked,
-} from "lucide-react";import { projects, workExperience, publications, getSkills } from "./data";
+} from "lucide-react";
+
+import { projects, workExperience, publications } from "./data";
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -145,26 +145,79 @@ function App() {
             <h2>Featured Projects</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            {projects.map((project) => (
-              <div key={project.title} className="card p-4 sm:p-6">
-                <h3 className="text-base sm:text-xl font-semibold mb-2 text-cyan-400">
-                  {project.title}
-                </h3>
-                <p className="text-gray-300 mb-4 text-sm sm:text-base">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => (
-                    <span key={tech} className="tag">
-                      {tech}
-                    </span>
+            {projects.map((project) => {
+              const displayImageUrl = project.customImageUrl ?? project.imageUrl;
+
+              return (
+                <div key={project.title} className="card p-4 sm:p-6">
+                  {displayImageUrl &&
+                    (project.link ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block mb-4 group"
+                      aria-label={`Open ${project.title}`}
+                      title={`Open ${project.title}`}
+                    >
+                      <div className="relative overflow-hidden rounded-lg border border-slate-800/60 bg-slate-950/20">
+                        <img
+                          src={displayImageUrl}
+                          alt={`${project.title} preview`}
+                          loading="lazy"
+                          referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            if (
+                              project.imageUrl &&
+                              e.currentTarget.src !== project.imageUrl
+                            ) {
+                              e.currentTarget.src = project.imageUrl;
+                            }
+                          }}
+                          className="w-full h-44 sm:h-48 object-cover transition-opacity duration-200 group-hover:opacity-90"
+                        />
+                        <div className="absolute top-3 right-3 rounded-md bg-slate-950/70 border border-slate-800/60 p-2 text-cyan-300 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                          <ExternalLink className="w-4 h-4" />
+                        </div>
+                      </div>
+                    </a>
+                  ) : (
+                    <div className="block mb-4">
+                      <div className="relative overflow-hidden rounded-lg border border-slate-800/60 bg-slate-950/20">
+                        <img
+                          src={displayImageUrl}
+                          alt={`${project.title} preview`}
+                          loading="lazy"
+                          referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            if (
+                              project.imageUrl &&
+                              e.currentTarget.src !== project.imageUrl
+                            ) {
+                              e.currentTarget.src = project.imageUrl;
+                            }
+                          }}
+                          className="w-full h-44 sm:h-48 object-cover"
+                        />
+                      </div>
+                    </div>
                   ))}
+                  <h3 className="text-base sm:text-xl font-semibold mb-2 text-cyan-400">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-300 mb-4 text-sm sm:text-base">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                      <span key={tech} className="tag">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                {project.link && (
-                  <a href={project.link} className="link-button">
-                    View Project <ExternalLink className="w-4 h-4 ml-1" />
-                  </a>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
