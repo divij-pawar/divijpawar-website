@@ -25,10 +25,18 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen">
+      <div className="fixed inset-0 -z-10 h-full w-full bg-[#020617]">
+        {/* Top spotlight - Teal 700 */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_800px_600px_at_50%_0%,#0f766e,transparent)] opacity-60"></div>
+        {/* Bottom-right accent - Blue 800 */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_600px_600px_at_100%_100%,#1e40af,transparent)] opacity-50"></div>
+        {/* Bottom-left accent - Teal accent */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_500px_500px_at_0%_100%,#0d9488,transparent)] opacity-40"></div>
+      </div>
       <header
-        className={`fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-gray-900 via-indigo-900 to-gray-900 text-white transition-all duration-500 ${
-          isScrolled ? "h-16 sm:h-20" : "h-32 sm:h-44 md:h-52"
+        className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-500 ${
+          isScrolled ? "h-16 sm:h-20 bg-slate-950/80 backdrop-blur-md" : "h-32 sm:h-44 md:h-52"
         }`}
       >
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 h-full">
@@ -40,7 +48,7 @@ function App() {
             <img
               src="dp.jpg"
               alt="Profile"
-              className={`rounded-full border-2 border-indigo-500 shadow-xl transition-all duration-500 ${
+              className={`rounded-full border-2 border-cyan-400 shadow-xl transition-all duration-500 ${
                 isScrolled ? "w-14 h-14 sm:w-20 sm:h-20 mr-3 sm:mr-4" : "w-24 h-24 sm:w-40 sm:h-40 mt-6 sm:mt-10 mb-2 sm:mb-5"
               }`}
             />
@@ -53,7 +61,7 @@ function App() {
                 Divij Pawar
               </h1>
               <p
-                className={`text-indigo-200 transition-all duration-500 ${
+                className={`text-cyan-300 transition-all duration-500 ${
                   isScrolled ? "text-xs sm:text-sm" : "text-sm sm:text-xl"
                 }`}
               >
@@ -65,19 +73,19 @@ function App() {
             >
               <a
                 href="https://github.com/divij-pawar"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-cyan-400 transition-colors"
               >
                 <Github className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a
                 href="https://linkedin.com/in/divijpawar"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-cyan-400 transition-colors"
               >
                 <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a
                 href="mailto:workdivij@gmail.com"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-cyan-400 transition-colors"
               >
                 <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
@@ -90,7 +98,7 @@ function App() {
         {/* Status section */}
         <section className="mb-16 relative z-10 mt-32 sm:mt-16">
           <div className="section-title">
-            <Coffee className="w-6 h-6 text-indigo-400 mr-2" />
+            <Coffee className="w-6 h-6 text-cyan-400 mr-2" />
             <h3>
               Hi! I’m currently building{" "}
               <a
@@ -133,13 +141,13 @@ function App() {
         {/* Projects */}
         <section className="mb-16">
           <div className="section-title">
-            <Briefcase className="w-6 h-6 text-indigo-400 mr-2" />
+            <Briefcase className="w-6 h-6 text-cyan-400 mr-2" />
             <h2>Featured Projects</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {projects.map((project) => (
               <div key={project.title} className="card p-4 sm:p-6">
-                <h3 className="text-base sm:text-xl font-semibold mb-2 text-indigo-300">
+                <h3 className="text-base sm:text-xl font-semibold mb-2 text-cyan-400">
                   {project.title}
                 </h3>
                 <p className="text-gray-300 mb-4 text-sm sm:text-base">{project.description}</p>
@@ -163,15 +171,15 @@ function App() {
         {/* Education */}
         <section className="mb-16">
           <div className="section-title">
-            <BookOpen className="w-6 h-6 text-indigo-400 mr-2" />
+            <BookOpen className="w-6 h-6 text-cyan-400 mr-2" />
             <h2>Education</h2>
           </div>
           <div className="card p-4 sm:p-6">
             <div className="mb-6 last:mb-0">
-              <h3 className="text-base sm:text-xl font-semibold text-indigo-300">
+              <h3 className="text-base sm:text-xl font-semibold text-cyan-400">
                 Master of Computer Science
               </h3>
-              <p className="text-indigo-400 text-sm sm:text-base">
+              <p className="text-cyan-300 text-sm sm:text-base">
                 University of Massachusetts, Lowell • 2024-2025
               </p>
               <p className="mt-2 text-gray-300 text-sm sm:text-base">
@@ -181,11 +189,11 @@ function App() {
               </p>
             </div>
             <div>
-              <h3 className="text-base sm:text-xl font-semibold text-indigo-300">
+              <h3 className="text-base sm:text-xl font-semibold text-cyan-400">
                 Bachelor of Engineering in Electronics and Telecommunication
                 Engineering
               </h3>
-              <p className="text-indigo-400 text-sm sm:text-base">
+              <p className="text-cyan-300 text-sm sm:text-base">
                 University of Mumbai, Mumbai • 2016-2021
               </p>
               <p className="mt-2 text-gray-300 text-sm sm:text-base">
@@ -200,13 +208,13 @@ function App() {
         {/* Experience */}
         <section className="mb-16">
           <div className="section-title">
-            <Briefcase className="w-6 h-6 text-indigo-400 mr-2" />
+            <Briefcase className="w-6 h-6 text-cyan-400 mr-2" />
             <h2>Work Experience</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {workExperience.map((experience) => (
               <div key={experience.title} className="card p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg font-semibold mb-3 text-indigo-300">
+                <h3 className="text-base sm:text-lg font-semibold mb-3 text-cyan-400">
                   {experience.title}
                 </h3>
                 <ul className="text-gray-300 mb-4 text-sm sm:text-base space-y-2 list-disc list-inside">
@@ -228,19 +236,19 @@ function App() {
 
         <section className="mb-16">
           <div className="section-title">
-            <BookMarked className="w-6 h-6 text-indigo-400 mr-2" />
+            <BookMarked className="w-6 h-6 text-cyan-400 mr-2" />
             <h2>Publications</h2>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:gap-6">
             {publications.map((pub) => (
               <div key={pub.title} className="card p-4 sm:p-6">
-                <h3 className="text-base sm:text-xl font-semibold mb-2 text-indigo-300">
+                <h3 className="text-base sm:text-xl font-semibold mb-2 text-cyan-400">
                   {pub.title}
                 </h3>
                 <p className="text-gray-400 text-xs sm:text-sm mb-2">{pub.authors}</p>
                 <p className="text-gray-300 mb-4 text-sm sm:text-base">{pub.description}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-indigo-400">
+                  <span className="text-cyan-300">
                     {pub.venue} • {pub.year}
                   </span>
                   <a href={pub.link} className="link-button">
@@ -252,47 +260,44 @@ function App() {
           </div>
         </section>
 
-        {/* GitHub Stats */}
-        <section className="mb-16 px-4 sm:px-6 md:px-8 py-8 bg-gradient-to-r from-indigo-600 to-indigo-800 rounded-lg shadow-lg -mx-4 sm:-mx-6 md:-mx-8 lg:mx-0">
-          <div className="section-title flex items-center mb-8">
-            <Trophy className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-100 mr-4 flex-shrink-0" />
-            <h2 className="text-2xl sm:text-3xl font-semibold text-white">GitHub Stats</h2>
-          </div>
+       {/* GitHub Stats */}
+<section className="mb-16 px-4 sm:px-6 md:px-8 py-8 bg-slate-900/50 border border-slate-800 backdrop-blur-sm rounded-lg shadow-xl -mx-4 sm:-mx-6 md:-mx-8 lg:mx-0">
+  <div className="section-title flex items-center mb-8">
+    <Trophy className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400 mr-4 flex-shrink-0" />
+    <h2 className="text-2xl sm:text-3xl font-semibold text-white">GitHub Stats</h2>
+  </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-8">
-            {/* Text Section */}
-            <div className="flex flex-col items-start text-white w-full md:w-1/2">
-              <div className="text-base sm:text-lg mb-4">
-                Here are some statistics from my{" "}
-                <a
-                  href="https://www.github.com/divij-pawar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    textDecoration: "underline",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Github profile
-                </a>
-                . Feel free to explore the contributions, repositories, and
-                stars I've received!
-              </div>
-              <div className="grid grid-cols-3 gap-2 sm:gap-6 w-full">
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-indigo-400">350+</div>
-                  <div className="text-gray-300 text-xs sm:text-sm">Public Contributions</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-indigo-400">40+</div>
-                  <div className="text-gray-300 text-xs sm:text-sm">Public Repositories</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-indigo-400">7</div>
-                  <div className="text-gray-300 text-xs sm:text-sm">Stars Received</div>
-                </div>
-              </div>
-            </div>
+  <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-8">
+    {/* Text Section */}
+    <div className="flex flex-col items-start text-white w-full md:w-1/2">
+      <div className="text-base sm:text-lg mb-4 text-slate-300">
+        Here are some statistics from my{" "}
+        <a
+          href="https://www.github.com/divij-pawar"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 decoration-2 font-bold transition-colors"
+        >
+          Github profile
+        </a>
+        . Feel free to explore the contributions, repositories, and stars I've received!
+      </div>
+      
+      <div className="grid grid-cols-3 gap-2 sm:gap-6 w-full">
+        <div className="text-center p-2 rounded-lg bg-slate-800/40">
+          <div className="text-2xl sm:text-3xl font-bold text-cyan-400">350+</div>
+          <div className="text-slate-400 text-xs sm:text-sm">Contributions</div>
+        </div>
+        <div className="text-center p-2 rounded-lg bg-slate-800/40">
+          <div className="text-2xl sm:text-3xl font-bold text-cyan-400">40+</div>
+          <div className="text-slate-400 text-xs sm:text-sm">Repositories</div>
+        </div>
+        <div className="text-center p-2 rounded-lg bg-slate-800/40">
+          <div className="text-2xl sm:text-3xl font-bold text-cyan-400">7</div>
+          <div className="text-slate-400 text-xs sm:text-sm">Stars</div>
+        </div>
+      </div>
+    </div>
 
             {/* Image Card */}
             <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md w-full md:w-1/2">
@@ -306,7 +311,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="bg-gray-800 text-gray-400 py-8">
+      <footer className="bg-zinc-900 text-gray-400 py-8">
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl mx-auto text-center">
           <p className="text-sm sm:text-base">© 202Divij Pawar. All rights reserved.</p>
         </div>
