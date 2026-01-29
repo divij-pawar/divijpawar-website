@@ -49,4 +49,18 @@ header {
   .section-title {
     font-size: 1.25rem;
   }
+
+  body {
+    @apply overflow-x-hidden;
+  }
+
+  main {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    @apply p-4;
+  }
 }
