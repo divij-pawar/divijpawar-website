@@ -364,11 +364,17 @@ function App() {
         </section>
       </main>
 
-      <footer className="bg-zinc-900 text-gray-400 py-8">
-        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl mx-auto text-center">
-          <p className="text-sm sm:text-base">© 202Divij Pawar. All rights reserved.</p>
-        </div>
-      </footer>
+<footer class="mt-20 pb-10 border-t border-slate-800 pt-8 text-center">
+  <div class="font-mono text-sm tracking-tight">
+    <span class="text-slate-500">/* EOF: End of Portfolio. Back to </span>
+    <span class="text-cyan-400 font-bold">main</span>
+    <span class="text-slate-500"> */</span>
+  </div>
+  
+  <p class="mt-4 text-xs text-slate-600 uppercase tracking-widest">
+    • All Systems Operational •
+  </p>
+</footer>
     </div>
   );
 }
