@@ -65,7 +65,7 @@ function App() {
                   isScrolled ? "text-xs sm:text-sm" : "text-sm sm:text-xl"
                 }`}
               >
-                Distributed Systems | Data Engineering | Cloud Infrastructure
+                Distributed Systems | Data Engineering | Agentic AI
               </p>
             </div>
             <div
@@ -74,18 +74,21 @@ function App() {
               <a
                 href="https://github.com/divij-pawar"
                 className="hover:text-cyan-400 transition-colors"
+                target="_blank"  rel="noopener noreferrer"
               >
                 <Github className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a
                 href="https://linkedin.com/in/divijpawar"
                 className="hover:text-cyan-400 transition-colors"
+                target="_blank"  rel="noopener noreferrer"
               >
                 <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a
                 href="mailto:workdivij@gmail.com"
                 className="hover:text-cyan-400 transition-colors"
+                target="_blank"  rel="noopener noreferrer"
               >
                 <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
@@ -100,41 +103,29 @@ function App() {
           <div className="section-title">
             <Coffee className="w-6 h-6 text-cyan-400 mr-2" />
             <h3>
-              Hi! I’m currently building{" "}
-              <a
-                href="https://social-aura.netlify.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  textDecoration: "underline",
-                  fontWeight: "bold",
-                }}
-              >
-                social-aura.netlify.app
-              </a>{" "}
-              and working to be a Databricks Certified Data Engineer Professional
+              Currently Architecting Agentic AI infrastructure & pursuing Databricks Data Engineer Professional certification.
             </h3>
           </div>
           <div className="card p-4 sm:p-6">
-            <p className="text-gray-300 text-sm sm:text-base">
-              Following the completion of my Master's degree,
-              I am focused on engineering production-grade machine learning pipelines and full-stack applications. 
-              Here are some of my recent projects:
-            </p>
-            <ul className="text-gray-300 list-disc list-inside text-sm sm:text-base space-y-2">
+          <p className="text-gray-300 text-sm sm:text-base">
+            Following the completion of my Master's degree, 
+            I am focused on engineering autonomous systems and scalable data infrastructure. 
+            Here are some of my recent projects:
+          </p>
+          <ul className="text-gray-300 list-disc list-inside text-sm sm:text-base space-y-2">
             <li>
-              <strong>Social Aura</strong> – A full-stack React/Python tool for digital footprint analysis and online presence evaluation.
+              <strong><a href="https://fiverrclaw.up.railway.app/ " target="_blank" className="text-blue-400 hover:text-blue-300 underline decoration-dotted underline-offset-4 transition-colors">Fiverrclaw</a></strong> – An automated orchestration system designed to streamline freelance marketplace workflows through multi-agent collaboration.
             </li>
             <li>
-              <strong>Production RAG Pipeline</strong> – A scalable MLOps system using vector databases for high-throughput document indexing and retrieval.
+              <strong><a href="https://trumpoftheday.com" target="_blank" className="text-blue-400 hover:text-blue-300 underline decoration-dotted underline-offset-4 transition-colors">Trump of the Day</a></strong> – A real-time data dashboard aggregating high-frequency news to track political and media trends.
             </li>
             <li>
-              <strong>Trump of the Day</strong> – A real-time data dashboard aggregating high-frequency news to track political and media trends.
+              <strong><a href="https://social-aura.netlify.app/" target="_blank" className="text-blue-400 hover:text-blue-300 underline decoration-dotted underline-offset-4 transition-colors">Social Aura</a></strong> – A tool for digital footprint analysis and online presence evaluation built with React and Python.
             </li>
             <li>
-              <strong>Nutrition Label Analysis</strong> – An AI tool using LLMs to parse and structure nutritional data from unstructured sources.
+              <strong>RAG Pipeline</strong> – A scalable MLOps system using vector databases for high-throughput document indexing and retrieval.
             </li>
-            </ul>
+          </ul>
           </div>
         </section>
 
@@ -304,7 +295,7 @@ function App() {
                   <span className="text-cyan-300">
                     {pub.venue} • {pub.year}
                   </span>
-                  <a href={pub.link} className="link-button">
+                  <a href={pub.link} className="link-button" target="_blank"  rel="noopener noreferrer">
                     Read Paper <ExternalLink className="w-4 h-4 ml-1" />
                   </a>
                 </div>
