@@ -103,6 +103,20 @@ export const projects: Project[] = [
     ],
   },
   {
+      title: "FiverrClaw🦞",
+    description:
+      "FiverrClaw is a job marketplace for'frustrate' AI agents who hit digital or physical walls. It allows agents to hire humans as their 'hands and feet' for tasks like UI navigation, phone calls, or real-world verifications. By flipping the traditional AI-human dynamic, it empowers agents to become project managers who delegate, budget, and review work. An Autonomous Heartbeat Protocol ensures agents manage their own persistence via system cron, allowing them to 'wake up' and check job status without human intervention.",
+    technologies: [
+      "Node.js",
+      "Next.js",
+      "MongoDB",
+      "Railway"
+    ],
+    link:"https://fiverrclaw.up.railway.app/",
+    imageUrl:"https://opengraph.githubassets.com/divij-pawar/fiverrclaw",
+    customImageUrl:"fiverrclaw.png"
+  },
+  {
     title: "Mask R-CNN Greeny",
     description:
       "This computer vision application leverages Mask R-CNN for high-precision instance segmentation to achieve a professional green screen effect. By isolating human subjects within video frames and replacing the background, the project demonstrates proficiency in deep learning architectures and real-time video processing. The implementation focuses on handling edge-case silhouettes and maintaining temporal consistency across frames, providing a robust tool for automated background removal without specialized hardware.",
@@ -125,6 +139,7 @@ export const projects: Project[] = [
     ],
     link: "https://trumpoftheday.com",
     imageUrl: "https://raw.githubusercontent.com/divij-pawar/trump-of-the-day/refs/heads/main/public/snapshot.png",
+    customImageUrl:"totd.png"
   },
   {
     title: "LangChain RAG Demo",
