@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div  id="top" className="min-h-screen">
       <div className="fixed inset-0 -z-10 h-full w-full bg-[#020617]">
         {/* Top spotlight - Teal 700 */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_800px_600px_at_50%_0%,#0f766e,transparent)] opacity-60"></div>
@@ -355,14 +355,26 @@ function App() {
         </section>
       </main>
 
-<footer class="mt-20 pb-10 border-t border-slate-800 pt-8 text-center">
-  <div class="font-mono text-sm tracking-tight">
-    <span class="text-slate-500">/* EOF: End of Portfolio. Back to </span>
-    <span class="text-cyan-400 font-bold">main</span>
-    <span class="text-slate-500"> */</span>
+<footer className="mt-20 pb-10 border-t border-slate-800 pt-8 text-center">
+  <div className="font-mono text-sm tracking-tight flex items-center justify-center gap-2">
+    <span className="text-slate-500">/* EOF: End of Portfolio. Back to </span>
+    <span className="text-cyan-400 font-bold"><a href="#top" className="text-cyan-400 font-bold hover:underline transition-all">
+  main
+</a></span>
+    <span className="text-slate-500"> */</span>
+    
+    <a 
+      href="https://github.com/divij-pawar/divijpawar-website" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="ml-2 text-slate-500 hover:text-white transition-colors"
+      aria-label="GitHub Repository"
+    >
+      <Github size={18} />
+    </a>
   </div>
   
-  <p class="mt-4 text-xs text-slate-600 uppercase tracking-widest">
+  <p className="mt-4 text-xs text-slate-600 uppercase tracking-widest">
     • All Systems Operational •
   </p>
 </footer>
