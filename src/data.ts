@@ -90,17 +90,20 @@ export const getSkills = (category: string): string[] => {
 export const projects: Project[] = [
   {
     title: "Cosmic Risk Management System | Finrise Softech Pvt Ltd",
-    description:
-      "Designed and developed six Python microservices to optimize trade data processing, reducing latency by 40% and improving scalability. Enhanced PostgreSQL performance for real-time trade calculations and integrated WebSockets for instant stock price updates via the Zerodha API. Automated database backups and data verification with CLI tools and shell scripts, cutting manual errors by 70%. Managed CI/CD pipelines, Docker orchestration, and Kafka-based event streaming for seamless deployment and efficient real-time data processing.",
-    technologies: [
-      "Python",
-      "C",
-      "WebSocket",
-      "Shell",
-      "Kafka",
-      "Agile",
-      "PostgresQL",
-    ],
+  description: 
+    "Architected and executed the end-to-end lifecycle of a real-time Risk Management System (RMS), transitioning a monolithic data flow into a suite of six decoupled Python micro-daemons. Engineered high-concurrency services using ZeroMQ and Postgres LISTEN/NOTIFY to achieve sub-second Mark-to-Market (MTM) calculations and live exposure monitoring. Designed and deployed a custom cross-DB integrity utility to automate data validation between MySQL and PostgreSQL, eliminating manual reconciliation for DBA teams. Optimized the PostgreSQL interaction layer and built resilient WebSocket handlers for Zerodha/CQG feeds, while managing entire service orchestration via custom Linux daemon management and Bash automation.",
+  technologies: [
+    "Python",
+    "ZeroMQ",
+    "PostgreSQL",
+    "WebSockets",
+    "Linux IPC",
+    "Event-Driven Architecture",
+    "Bash",
+    "C (Embedded)",
+    "MySQL",
+    "Data Integrity"
+  ]
   },
   {
       title: "FiverrClaw🦞",
