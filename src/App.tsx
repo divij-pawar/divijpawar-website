@@ -12,6 +12,41 @@ import {
 } from "lucide-react";
 
 import { projects, workExperience, publications } from "./data";
+
+function renderBoldMarkup(text: string) {
+  // Supports simple **bold** spans inside plain text.
+  // Example: "Built **ZeroMQ** pipeline" => "Built " + <strong>ZeroMQ</strong> + " pipeline"
+  const nodes: Array<string | JSX.Element> = [];
+  let i = 0;
+  let key = 0;
+
+  while (i < text.length) {
+    const start = text.indexOf("**", i);
+    if (start === -1) {
+      nodes.push(text.slice(i));
+      break;
+    }
+
+    if (start > i) nodes.push(text.slice(i, start));
+
+    const end = text.indexOf("**", start + 2);
+    if (end === -1) {
+      // Unclosed bold marker; treat the rest as plain text.
+      nodes.push(text.slice(start));
+      break;
+    }
+
+    const boldText = text.slice(start + 2, end);
+    nodes.push(
+      <strong key={`b-${key++}`} className="font-semibold text-gray-100">
+        {boldText}
+      </strong>,
+    );
+    i = end + 2;
+  }
+
+  return nodes;
+}
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -138,6 +173,8 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {projects.map((project) => {
               const displayImageUrl = project.customImageUrl ?? project.imageUrl;
+              const projectDescription =
+                project.description ?? (project as { desctiption?: string }).desctiption;
 
               return (
                 <div key={project.title} className="card p-4 sm:p-6">
@@ -196,9 +233,18 @@ function App() {
                   <h3 className="text-base sm:text-xl font-semibold mb-2 text-cyan-400">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mb-4 text-sm sm:text-base">
-                    {project.description}
-                  </p>
+                  {projectDescription ? (
+                    <p className="text-gray-300 mb-4 text-sm sm:text-base">
+                      {renderBoldMarkup(projectDescription)}
+                    </p>
+                  ) : null}
+                  {project.bullets?.length ? (
+                    <ul className="text-gray-300 mb-4 text-sm sm:text-base space-y-2 list-disc list-inside">
+                      {project.bullets.map((bullet, idx) => (
+                        <li key={idx}>{renderBoldMarkup(bullet)}</li>
+                      ))}
+                    </ul>
+                  ) : null}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech) => (
                       <span key={tech} className="tag">
@@ -262,8 +308,8 @@ function App() {
                   {experience.title}
                 </h3>
                 <ul className="text-gray-300 mb-4 text-sm sm:text-base space-y-2 list-disc list-inside">
-                  {experience.items.map((item, idx) => (
-                    <li key={idx}>{item}</li>
+                  {experience.bullets.map((item, idx) => (
+                    <li key={idx}>{renderBoldMarkup(item)}</li>
                   ))}
                 </ul>
                 <div className="flex flex-wrap gap-2">

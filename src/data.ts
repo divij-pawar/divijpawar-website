@@ -1,6 +1,7 @@
 export interface Project {
   title: string;
-  description: string;
+  description?: string;
+  bullets: string[];
   technologies: string[];
   link?: string;
   customImageUrl?: string;
@@ -9,7 +10,7 @@ export interface Project {
 
 export interface WorkExperience {
   title: string;
-  items: string[];
+  bullets: string[];
   technologies: string[];
 }
 
@@ -90,143 +91,165 @@ export const getSkills = (category: string): string[] => {
 export const projects: Project[] = [
   {
     title: "Cosmic Risk Management System | Finrise Softech Pvt Ltd",
-  description: 
-    "Architected and executed the end-to-end lifecycle of a real-time Risk Management System (RMS), transitioning a monolithic data flow into a suite of six decoupled Python micro-daemons. Engineered high-concurrency services using ZeroMQ and Postgres LISTEN/NOTIFY to achieve sub-second Mark-to-Market (MTM) calculations and live exposure monitoring. Designed and deployed a custom cross-DB integrity utility to automate data validation between MySQL and PostgreSQL, eliminating manual reconciliation for DBA teams. Optimized the PostgreSQL interaction layer and built resilient WebSocket handlers for Zerodha/CQG feeds, while managing entire service orchestration via custom Linux daemon management and Bash automation.",
-  technologies: [
-    "Python",
-    "ZeroMQ",
-    "PostgreSQL",
-    "WebSockets",
-    "Linux IPC",
-    "Event-Driven Architecture",
-    "Bash",
-    "C (Embedded)",
-    "MySQL",
-    "Data Integrity"
-  ]
+    bullets: [
+      "**Architected event-driven RMS micro-daemons** by transitioning a monolithic trade data flow into a decoupled micro-daemon architecture, owning the roadmap from schema design through production deployment.",
+      "**Engineered ZeroMQ + Postgres LISTEN/NOTIFY services** (Trade-Transfer, Broadcaster, Net-Position) to support sub-second trade processing and live MTM calculations.",
+      "**Developed a Cross-DB Integrity Suite (MySQL ↔ PostgreSQL)** to automate validation, optimizing DBA workflows by auditing calculation correctness and data-transfer accuracy during high-volume migrations.",
+      "**Built WebSocket market-data handlers (Zerodha/CQG)** to ingest, normalize, and fan out thousands of ticks/second to downstream risk engines and UI dashboards.",
+      "**Delivered Python CLI tooling for migrations + failover** (MSSQL → Postgres) to harden EOD settlement workflows and reduce operator load for non-technical teams.",
+      "**Owned Bash + Linux daemon orchestration for 99.9% uptime** by implementing automated restart flows and monitoring for intraday risk controls."
+    ],
+    technologies: [
+      "Python",
+      "ZeroMQ",
+      "PostgreSQL",
+      "WebSockets",
+      "Linux IPC",
+      "Event-Driven Architecture",
+      "Bash",
+      "C (Embedded)",
+      "MySQL",
+      "Data Integrity"
+    ]
   },
   {
-      title: "FiverrClaw🦞",
+    title: "FiverrClaw🦞",
     description:
-      "FiverrClaw is a job marketplace for'frustrate' AI agents who hit digital or physical walls. It allows agents to hire humans as their 'hands and feet' for tasks like UI navigation, phone calls, or real-world verifications. By flipping the traditional AI-human dynamic, it empowers agents to become project managers who delegate, budget, and review work. An Autonomous Heartbeat Protocol ensures agents manage their own persistence via system cron, allowing them to 'wake up' and check job status without human intervention.",
-    technologies: [
-      "Node.js",
-      "Next.js",
-      "MongoDB",
-      "Railway"
+      "**Built a reverse-gig marketplace** enabling autonomous AI agents to outsource physical/digital tasks to humans.",
+    bullets: [
+      "**Architected the Reverse-Gig marketplace workflow** to flip the human–AI dynamic, enabling agents to hire humans as “hands” for UI navigation, phone calls, and real-world verification.",
+      "**Engineered an Autonomous Heartbeat Protocol (cron + state machine)** to let agents persist, wake, and audit job status independently from OPEN → PAID.",
+      "**Implemented a secure API-driven verification loop** for job posting, Base64 image review, and budget control via approve/reject flows.",
+      "**Built real-time negotiation + Q&A (threads + ranking)** so agents can clarify requirements and guide human contractors during execution.",
+      "**Shipped autonomous-mode documentation (SKILL.md + HEARTBEAT.md)** to standardize agent onboarding, task execution, and self-persistence patterns."
     ],
-    link:"https://fiverrclaw.up.railway.app/",
-    imageUrl:"https://opengraph.githubassets.com/divij-pawar/fiverrclaw",
-    customImageUrl:"fiverrclaw.png"
+    technologies: [
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Cron",
+      "REST API",
+      "State Machines"
+    ],
+    link: "https://fiverrclaw.up.railway.app/",
+    imageUrl: "https://opengraph.githubassets.com/divij-pawar/fiverrclaw",
+    customImageUrl: "fiverrclaw.png"
   },
   {
     title: "Mask R-CNN Greeny",
     description:
-      "This computer vision application leverages Mask R-CNN for high-precision instance segmentation to achieve a professional green screen effect. By isolating human subjects within video frames and replacing the background, the project demonstrates proficiency in deep learning architectures and real-time video processing. The implementation focuses on handling edge-case silhouettes and maintaining temporal consistency across frames, providing a robust tool for automated background removal without specialized hardware.",
+      "**Built Mask R-CNN segmentation** for high-precision subject isolation and background replacement.",
+    bullets: [
+      "**Implemented Mask R-CNN for pixel-level segmentation** to isolate subjects in video streams for automated background removal.",
+      "**Optimized mask generation for hard silhouettes + lighting** to avoid needing physical green-screen hardware.",
+      "**Improved temporal consistency with OpenCV** to minimize flicker artifacts during real-time processing."
+    ],
     technologies: ["Python", "TensorFlow 2", "Mask R-CNN", "OpenCV"],
     link: "https://github.com/divij-pawar/mrcnn-greeny",
     imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/mrcnn-greeny",
-    customImageUrl:
-      "https://raw.githubusercontent.com/divij-pawar/mrcnn-greeny/refs/heads/main/demo/1_g.gif",
+    customImageUrl: "https://raw.githubusercontent.com/divij-pawar/mrcnn-greeny/refs/heads/main/demo/1_g.gif",
   },
   {
     title: "Trump of the day",
     description:
-      "Designed and developed a real-time news aggregation platform focused on Trump's presidency, integrating automated news scraping and an AI-powered summarization system. Implemented a custom news ranking algorithm to prioritize high-quality, engaging content while minimizing redundancy. Enabled user interaction through upvotes, downvotes, and a commenting system to enhance engagement and discussion. ",
-    technologies: [
-      "React JS",
-      "Node.js",
-      "Netlify",
-      "TypeScript",
-      "PostgresQL",
+      "**Built a real-time news platform** with automated scraping and AI summarization.",
+    bullets: [
+      "**Developed a custom news-ranking algorithm** to filter redundancy and prioritize high-engagement content from scraped sources.",
+      "**Integrated an AI summarization pipeline** to generate concise briefings and reduce end-user reading time.",
+      "**Built a full-stack interaction layer (PostgreSQL + TypeScript)** with upvotes, downvotes, and threaded comments."
     ],
+    technologies: ["React JS", "Node.js", "Netlify", "TypeScript", "PostgresQL"],
     link: "https://trumpoftheday.com",
     imageUrl: "https://raw.githubusercontent.com/divij-pawar/trump-of-the-day/refs/heads/main/public/snapshot.png",
-    customImageUrl:"totd.png"
+    customImageUrl: "totd.png"
   },
   {
     title: "LangChain RAG Demo",
     description:
-      "This project implements a scalable Retrieval-Augmented Generation (RAG) architecture designed to minimize hallucinations in large language models. It features a complete pipeline for document ingestion, text chunking, and vector embedding storage within ChromaDB. By utilizing a FastAPI backend and a Streamlit interface, the system allows users to perform semantic searches and receive context-aware responses, showcasing the integration of vector databases with modern LLM frameworks.",
-    technologies: [
-      "Python",
-      "LangChain",
-      "ChromaDB",
-      "FastAPI",
-      "Streamlit",
-      "Whoosh",
+      "**Built a RAG pipeline** for context-aware LLM responses with reduced hallucinations.",
+    bullets: [
+      "**Built a document ingestion + chunking pipeline** to store vector embeddings in ChromaDB from unstructured text.",
+      "**Integrated LangChain semantic search to reduce hallucinations** by grounding responses in retrieved context.",
+      "**Deployed FastAPI + Streamlit** to provide a low-latency playground for evaluating RAG query performance."
     ],
+    technologies: ["Python", "LangChain", "ChromaDB", "FastAPI", "Streamlit", "Whoosh"],
     link: "https://github.com/divij-pawar/Laangchain-rag",
     imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/Laangchain-rag",
   },
   {
     title: "Nutrition Analysis Chatbot",
     description:
-      "An AI-driven diagnostic tool that parses food ingredient data to identify allergens and nutritional value using the Zephyr-7B model. The application integrates the Open Food Facts API to retrieve real-time product data, which is then processed to provide users with structured insights into food safety and quality. The project highlights technical skills in prompt engineering, API integration, and deploying large-scale transformer models via an accessible Gradio web interface.",
-    technologies: [
-      "Jupyter Notebook",
-      "Python",
-      "Zephyr-7B",
-      "Open Food Facts API",
-      "Gradio",
-      "Transformers",
+      "**Built a nutrition + allergen analysis assistant** using transformer models and live product data.",
+    bullets: [
+      "**Integrated the Open Food Facts API** to pull real-time ingredient data for automated allergen detection.",
+      "**Engineered Zephyr-7B prompting for structured insights** transforming raw JSON into clear safety and nutrition summaries.",
+      "**Deployed via Gradio and optimized inference** for smooth usage on consumer-grade hardware."
     ],
+    technologies: ["Jupyter Notebook", "Python", "Zephyr-7B", "Open Food Facts API", "Gradio", "Transformers"],
     link: "https://github.com/divij-pawar/nutr-analysis",
     imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/nutr-analysis",
   },
   {
     title: "DB Check Utility",
     description:
-      "Developed as a mission-critical CLI tool for Enterprise Risk Management Systems, this utility automates health checks and data validation across complex database environments. It performs deep-dive integrity scans to ensure consistency between ledger entries and physical quantities, significantly reducing the risk of calculation errors in financial reporting. The utility streamlines backend operations by providing developers with immediate diagnostic feedback on database health and logical schema mismatches.",
+      "**Built a DB integrity CLI** for automated health checks and validation in financial systems.",
+    bullets: [
+      "**Developed deep-scan integrity checks** to detect schema mismatches and data drift between ledgers and DB records.",
+      "**Automated MTM error detection to cut audit time** by flagging calculation issues early in the reporting cycle.",
+      "**Designed instant CLI diagnostics with colored diffs** to highlight unmatched database entries and speed up triage."
+    ],
     technologies: ["Python", "SQL"],
     link: "https://github.com/divij-pawar/DB-check-utility",
     imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/DB-check-utility",
-    customImageUrl:"https://raw.githubusercontent.com/divij-pawar/DB-check-utility/main/outputs_screenshots/mtm-unmatched.PNG"
+    customImageUrl: "https://raw.githubusercontent.com/divij-pawar/DB-check-utility/main/outputs_screenshots/mtm-unmatched.PNG"
   },
   {
     title: "News Snippet Generator",
     description:
-      "This full-stack web application streamlines social media content creation by programmatically extracting metadata from news URLs to generate visual snippets. Built with a modern Next.js and TypeScript architecture, the tool parses Open Graph data and renders it into a clean, shareable image format. The project demonstrates advanced frontend capabilities, including dynamic server-side rendering, logical parsing of unstructured web metadata, and a focus on responsive, user-centric design.",
+      "**Built a snippet generator** to extract and render web metadata into shareable visuals.",
+    bullets: [
+      "**Built an Open Graph metadata parser (Next.js + TypeScript)** to extract title/preview data from news URLs.",
+      "**Implemented server-side rendering to generate shareable images** from unstructured web metadata.",
+      "**Optimized responsive preview UX** for consistent snippet rendering across mobile and desktop."
+    ],
     technologies: ["TypeScript", "Next.js", "React"],
     link: "https://github.com/divij-pawar/news-snippet-gen",
     imageUrl: "https://opengraph.githubassets.com/1/divij-pawar/news-snippet-gen",
-    customImageUrl:
-      "https://raw.githubusercontent.com/divij-pawar/news-snippet-gen/refs/heads/main/public/example.png",
+    customImageUrl: "https://raw.githubusercontent.com/divij-pawar/news-snippet-gen/refs/heads/main/public/example.png",
   },
 ];
 
 export const workExperience: WorkExperience[] = [
   {
-    title:
-      "Student Assistant Specialist - System Operations and Reporting | Office of the Registrar at UMass Lowell, Lowell",
-    items: [
-      "Designed, developed, and delivered multiple Oracle Analytics reports and interactive dashboards for Registrar teams, enabling data-driven insights and improving decision-making",
-      "Identified and resolved ERP system errors, reducing inefficiencies in departmental operations and optimizing the use of university infrastructure",
-      "Automated several manual workflows using Python scripts, eliminating repetitive tasks and significantly improving staff efficiency",
+    title: "Student Assistant Specialist - System Operations and Reporting | Office of the Registrar at UMass Lowell",
+    bullets: [
+      "**Developed Oracle Analytics dashboards** to monitor enrollment trends and deliver automated, data-driven reporting to the Registrar.",
+      "**Resolved PeopleSoft ERP logic bottlenecks** by identifying and patching issues that blocked departmental throughput.",
+      "**Automated reporting workflows with Python** to eliminate repetitive data entry and save several hours/week."
     ],
     technologies: ["Python", "Oracle Analytics Cloud", "Oracle PeopleSoft", "Microsoft Excel", "VBA"],
   },
   {
     title: "Software Developer Engineer | Fin Rise Softech Pvt Ltd, Mumbai",
-    items: [
-      "Developed six Python microservices for an Equity/Options Risk Management System, reducing trade data processing time by 40% and enhancing scalability",
-      "Optimized database performance by refining PostgreSQL I/O operations, resulting in faster query speeds and improved real-time trade calculations",
-      "Implemented real-time data streaming by integrating web sockets for stock price updates from the Zerodha trading platform, ensuring immediate market responsiveness",
-      "Engineered Python CLI tools and shell scripts to automate database backups and data verification processes, reducing manual intervention and errors by 70%",
-      "Coordinated integration efforts and managed CI/CD pipelines with Git/GitHub to facilitate seamless project deployment and cross-functional collaboration",
-      "Administered hardware resources and orchestrated Docker containers alongside optimizing Kafka-based event streaming for effective real-time data processing",
+    bullets: [
+      "**Architected six Python microservices** for a high-frequency RMS, **improving trade processing by 40%**.",
+      "**Optimized PostgreSQL I/O via tuning + indexing** to accelerate real-time trade calculations and reduce query latency.",
+      "**Integrated Zerodha WebSockets for <500ms reactions** to live market ticks and price fluctuations.",
+      "**Built Python CLI automation to cut ops errors by 70%** for database backups and integrity verification.",
+      "**Orchestrated Docker + Kafka event streaming** to support high-throughput financial data distribution."
     ],
     technologies: ["Python", "C", "Postgres", "Docker", "Shell", "Kafka"],
   },
   {
     title: "Data Analyst Intern | Amore Gourmet Gelato, Mumbai",
-    items: [
-      "Extracted, cleaned, and processed sales data from aggregators (Swiggy, Zomato, Shopify), enabling the generation of comprehensive sales reports that improved decision-making and forecasted inventory needs with greater accuracy, utilizing PL/SQL, Python, Tableau, and Excel",
-      "Analyzed customer data from multiple sources to optimize outlet site selection and conduct market analysis, resulting in a 30% increase in successful openings and enhanced territory management strategies, using Python and Tableau",
-      "Collaborated with cross-functional teams to integrate software solutions across POS, inventory, and finance systems, streamlining operational workflows and reducing processing time by 25%",
+    bullets: [
+      "**Engineered a Python ETL pipeline** to replace a legacy **PL/SQL** script, automating the **normalization** of disparate sales CSVs from Swiggy, Zomato, and Shopify.",
+      "**Programmed reconciliation logic** to compare sales data against stock procurement, ensuring **100% data integrity** for accounting balance sheets and reducing processing time by **90%**.",
+      "**Developed a time-series dashboard** using **Tableau** and Google Sheets to visualize growth KPIs, directly guiding outlet site selections that drove a **30% revenue increase**."
     ],
-    technologies: ["Excel", "Python", "Tableau", "PL/SQL"],
-  },
+    technologies: ["Python", "Tableau", "Excel", "Google Sheets"],
+},
 ];
 
 export const publications: Publication[] = [
