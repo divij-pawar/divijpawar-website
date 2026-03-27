@@ -132,7 +132,7 @@ export const projects: Project[] = [
       "REST API",
       "State Machines"
     ],
-    link: "https://fiverrclaw.up.railway.app/",
+    link: "https://fiverrclaw.onrender.com/",
     imageUrl: "https://opengraph.githubassets.com/divij-pawar/fiverrclaw",
     customImageUrl: "fiverrclaw.png"
   },
