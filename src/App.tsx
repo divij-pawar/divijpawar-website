@@ -138,7 +138,7 @@ function App() {
           <div className="section-title">
             <Coffee className="w-6 h-6 text-cyan-400 mr-2" />
             <h3>
-              Currently Architecting Agentic AI infrastructure & pursuing Databricks Data Engineer Professional certification.
+              Currently Architecting Agentic AI infrastructure & seeking Backend software engineering roles.
             </h3>
           </div>
           <div className="card p-4 sm:p-6">
