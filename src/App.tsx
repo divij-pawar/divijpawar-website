@@ -149,13 +149,10 @@ function App() {
           </p>
           <ul className="text-gray-300 list-disc list-inside text-sm sm:text-base space-y-2">
             <li>
-              <strong><a href="https://fiverrclaw.up.railway.app/ " target="_blank" className="text-blue-400 hover:text-blue-300 underline decoration-dotted underline-offset-4 transition-colors">Fiverrclaw</a></strong> – An automated orchestration system designed to streamline freelance marketplace workflows through multi-agent collaboration.
+              <strong><a href="https://fiverrclaw.onrender.com/ " target="_blank" className="text-blue-400 hover:text-blue-300 underline decoration-dotted underline-offset-4 transition-colors">Fiverrclaw</a></strong> – An automated orchestration system designed to streamline freelance marketplace workflows through multi-agent collaboration.
             </li>
             <li>
               <strong><a href="https://trumpoftheday.com" target="_blank" className="text-blue-400 hover:text-blue-300 underline decoration-dotted underline-offset-4 transition-colors">Trump of the Day</a></strong> – A real-time data dashboard aggregating high-frequency news to track political and media trends.
-            </li>
-            <li>
-              <strong><a href="https://social-aura.netlify.app/" target="_blank" className="text-blue-400 hover:text-blue-300 underline decoration-dotted underline-offset-4 transition-colors">Social Aura</a></strong> – A tool for digital footprint analysis and online presence evaluation built with React and Python.
             </li>
             <li>
               <strong>RAG Pipeline</strong> – A scalable MLOps system using vector databases for high-throughput document indexing and retrieval.
