@@ -67,4 +67,5 @@ export interface BlogPost {
   link: string;
   date: string;
   excerpt: string;
+  image?: string;   // Substack cover image, when the post has one
 }

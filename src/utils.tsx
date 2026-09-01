@@ -1,3 +1,5 @@
+import { Project, Experience } from './types';
+
 export function renderBoldMarkup(text: string) {
   // Supports simple **bold** spans inside plain text.
   // Example: "Built **ZeroMQ** pipeline" => "Built " + <strong>ZeroMQ</strong> + " pipeline"
@@ -31,4 +33,25 @@ export function renderBoldMarkup(text: string) {
   }
 
   return nodes;
+}
+
+/** Turns a string into a URL-safe slug, e.g. "Mask R-CNN Greeny" -> "mask-r-cnn-greeny" */
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/** Stable slug for a project's detail page URL, e.g. /projects/distributed-risk-management-system */
+export function getProjectSlug(project: Project): string {
+  return slugify(project.title);
+}
+
+/** Stable slug for an experience entry's detail page URL. Combines title + company
+ *  since job titles (e.g. "Software Development Intern") can repeat across companies. */
+export function getExperienceSlug(exp: Experience): string {
+  return slugify(`${exp.title}-${exp.company}`);
 }

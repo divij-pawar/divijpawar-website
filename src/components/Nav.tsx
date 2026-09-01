@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { personalInfo } from '../data/portfolioData';
 
 const LINKS = [
@@ -68,6 +69,10 @@ export default function Nav() {
   const [open, setOpen]         = useState(false);
   const [dark, setDark]         = useState(() => localStorage.getItem('theme') === 'dark');
 
+  const navigate  = useNavigate();
+  const location  = useLocation();
+  const isHome    = location.pathname === '/';
+
   useEffect(() => {
     if (dark) {
       document.documentElement.classList.add('dark');
@@ -84,7 +89,11 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Section-highlighting only makes sense on the home page (that's the only
+  // place the sections exist in the DOM). Re-run whenever the route changes,
+  // since Nav itself persists across routes and never remounts.
   useEffect(() => {
+    if (!isHome) { setActive(''); return; }
     const sections = document.querySelectorAll('section[id]');
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }),
@@ -92,11 +101,25 @@ export default function Nav() {
     );
     sections.forEach(s => obs.observe(s));
     return () => obs.disconnect();
-  }, []);
+  }, [isHome]);
 
   const scrollTo = (id: string) => {
     setOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    if (isHome) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Leaving a project/experience detail page — go home, then let
+      // HomePage's hash effect scroll to the right section once it's mounted.
+      navigate(`/#${id}`);
+    }
+  };
+
+  const goHome = () => {
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
   };
 
   return (
@@ -104,7 +127,7 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={goHome}
           className="font-display text-2xl"
           style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text)' }}
         >

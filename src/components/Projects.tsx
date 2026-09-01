@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { projects } from '../data/portfolioData';
-import { Project } from '../types';
-import { renderBoldMarkup } from '../utils';
-import ProjectModal from './ProjectModal';
+import { renderBoldMarkup, getProjectSlug } from '../utils';
 import { Reveal } from './Reveal';
 
 /* Cards cycle the four palette hues. These read as CSS variables so the set
@@ -12,8 +10,6 @@ const ACCENT_COLORS = ['var(--rose-ink)','var(--blueberry-ink)','var(--lilac-ink
 const ACCENT_BGS    = ['var(--rose-soft)','var(--blueberry-soft)','var(--lilac-soft)','var(--lemon-soft)'];
 
 export default function Projects() {
-  const [active, setActive] = useState<Project | null>(null);
-
   return (
     <section id="projects" className="section-pad section-alt" style={{ borderBottom: '1px solid var(--border)' }}>
       <div className="max-w-6xl mx-auto px-6">
@@ -32,10 +28,10 @@ export default function Projects() {
 
             return (
               <Reveal key={p.id} delay={i * 55}>
-                <div
+                <Link
+                  to={`/projects/${getProjectSlug(p)}`}
                   className="card"
-                  style={{ overflow: 'hidden', cursor: 'pointer', display: 'flex', flexDirection: 'column', height: '100%' }}
-                  onClick={() => setActive(p)}
+                  style={{ overflow: 'hidden', cursor: 'pointer', display: 'flex', flexDirection: 'column', height: '100%', textDecoration: 'none', color: 'inherit' }}
                 >
                   {/* Top accent bar */}
                   <div style={{ height: 3, background: ac }} />
@@ -84,14 +80,12 @@ export default function Projects() {
                       </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </Reveal>
             );
           })}
         </div>
       </div>
-
-      {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
     </section>
   );
 }

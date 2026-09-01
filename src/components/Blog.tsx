@@ -5,22 +5,51 @@ import { Reveal } from './Reveal';
 
 type FetchState = 'loading' | 'ready' | 'error';
 
+function stripHtml(html: string): string {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  return doc.body.textContent?.trim() ?? '';
+}
+
+function truncate(text: string, max: number): string {
+  if (text.length <= max) return text;
+  return text.slice(0, max).replace(/\s+\S*$/, '') + '…';
+}
+
 export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [state, setState] = useState<FetchState>('loading');
 
   useEffect(() => {
     let cancelled = false;
-    fetch('/api/substack-feed')
+
+    // Substack's RSS feed doesn't allow direct browser fetches (no CORS
+    // headers), so this routes through rss2json's free proxy — works on any
+    // static host, no backend required.
+    const feedUrl = `${personalInfo.substack}/feed`;
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+
+    fetch(apiUrl)
       .then(r => r.json())
       .then(data => {
         if (cancelled) return;
-        setPosts(data.posts ?? []);
-        setState(data.posts?.length ? 'ready' : 'error');
+        if (data.status !== 'ok' || !Array.isArray(data.items) || data.items.length === 0) {
+          setState('error');
+          return;
+        }
+        const parsed: BlogPost[] = data.items.map((item: Record<string, string>) => ({
+          title: item.title,
+          link: item.link,
+          date: item.pubDate,
+          excerpt: truncate(stripHtml(item.description || ''), 140),
+          image: item.thumbnail || undefined,
+        }));
+        setPosts(parsed);
+        setState('ready');
       })
       .catch(() => {
         if (!cancelled) setState('error');
       });
+
     return () => { cancelled = true; };
   }, []);
 
@@ -55,7 +84,7 @@ export default function Blog() {
         )}
 
         {state === 'ready' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.4rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.4rem' }}>
             {posts.map((post, i) => (
               <Reveal key={post.link} delay={i * 60}>
                 <a
@@ -63,22 +92,34 @@ export default function Blog() {
                   target="_blank"
                   rel="noreferrer"
                   className="card"
-                  style={{ display: 'block', padding: '1.4rem 1.5rem', height: '100%', textDecoration: 'none' }}
+                  style={{ display: 'flex', flexDirection: 'column', height: '100%', textDecoration: 'none', overflow: 'hidden' }}
                 >
-                  {post.date && (
-                    <p className="font-mono" style={{ fontSize: '0.65rem', letterSpacing: '0.08em', color: 'var(--muted)', marginBottom: '0.6rem' }}>
-                      {new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
-                    </p>
+                  {post.image && (
+                    <div className="gallery-tile" style={{ aspectRatio: '16/9', overflow: 'hidden', background: 'var(--bg)' }}>
+                      <img
+                        src={post.image}
+                        alt=""
+                        loading="lazy"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.35s ease' }}
+                      />
+                    </div>
                   )}
-                  <h3 className="font-display" style={{ fontSize: '1.1rem', lineHeight: 1.25, marginBottom: '0.6rem', color: 'var(--text)' }}>
-                    {post.title}
-                  </h3>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '0.9rem' }}>
-                    {post.excerpt}
-                  </p>
-                  <span className="font-mono" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--accent)', textTransform: 'uppercase' }}>
-                    Read on Substack →
-                  </span>
+                  <div style={{ padding: '1.4rem 1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    {post.date && (
+                      <p className="font-mono" style={{ fontSize: '0.65rem', letterSpacing: '0.08em', color: 'var(--muted)', marginBottom: '0.6rem' }}>
+                        {new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+                      </p>
+                    )}
+                    <h3 className="font-display" style={{ fontSize: '1.1rem', lineHeight: 1.25, marginBottom: '0.6rem', color: 'var(--text)' }}>
+                      {post.title}
+                    </h3>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '0.9rem', flex: 1 }}>
+                      {post.excerpt}
+                    </p>
+                    <span className="font-mono" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--accent)', textTransform: 'uppercase' }}>
+                      Read on Substack →
+                    </span>
+                  </div>
                 </a>
               </Reveal>
             ))}

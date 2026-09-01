@@ -1,6 +1,12 @@
+import { Link } from 'react-router-dom';
 import { experience } from '../data/portfolioData';
-import { renderBoldMarkup } from '../utils';
+import { renderBoldMarkup, getExperienceSlug } from '../utils';
 import { Reveal } from './Reveal';
+
+/* Same palette-cycling approach as Projects, offset by one hue so the two
+   gallery sections don't feel like copies of each other. */
+const ACCENT_COLORS = ['var(--blueberry-ink)','var(--rose-ink)','var(--lemon-ink)','var(--lilac-ink)'];
+const ACCENT_BGS    = ['var(--blueberry-soft)','var(--rose-soft)','var(--lemon-soft)','var(--lilac-soft)'];
 
 export default function Experience() {
   return (
@@ -11,81 +17,76 @@ export default function Experience() {
           <h2 className="heading">Professional History</h2>
         </Reveal>
 
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {experience.map((e, i) => (
-            <Reveal key={e.id} delay={i * 80}>
-              <div style={{
-                display: 'grid', gridTemplateColumns: '180px 1fr', gap: '2.5rem',
-                padding: '2rem 0', borderBottom: '1px solid var(--border)',
-              }}>
-                {/* Left */}
-                <div>
-                  <p className="font-mono" style={{ fontSize: '0.72rem', letterSpacing: '0.06em', color: 'var(--muted)', lineHeight: 1.6 }}>
-                    {e.startDate} – {e.endDate}
-                  </p>
-                  <p className="font-mono" style={{ fontSize: '0.65rem', color: 'var(--muted)', marginTop: 2, letterSpacing: '0.04em' }}>
-                    {e.location}
-                  </p>
-                </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.4rem' }}>
+          {experience.map((e, i) => {
+            const ac = ACCENT_COLORS[i % ACCENT_COLORS.length];
+            const bg = ACCENT_BGS[i % ACCENT_BGS.length];
+            const previewBullets = e.groups.flatMap(g => g.bullets).slice(0, 2);
+            const previewImpact = e.impact?.slice(0, 3);
 
-                {/* Right */}
-                <div>
-                  <h3 className="font-display" style={{ fontSize: '1.3rem', letterSpacing: '0.03em', marginBottom: '0.2rem' }}>{e.title}</h3>
-                  <p style={{ fontSize: '0.88rem', color: 'var(--accent)', fontWeight: 500, marginBottom: '0.6rem' }}>{e.company}</p>
-                  <p style={{ fontSize: '0.82rem', color: 'var(--muted)', fontStyle: 'italic', lineHeight: 1.6, marginBottom: '1rem', paddingLeft: '0.75rem', borderLeft: '2px solid var(--border)' }}>
-                    {e.context}
-                  </p>
+            return (
+              <Reveal key={e.id} delay={i * 65}>
+                <Link
+                  to={`/experience/${getExperienceSlug(e)}`}
+                  className="card"
+                  style={{ overflow: 'hidden', cursor: 'pointer', display: 'flex', flexDirection: 'column', height: '100%', textDecoration: 'none', color: 'inherit' }}
+                >
+                  {/* Top accent bar */}
+                  <div style={{ height: 3, background: ac }} />
 
-                  {/* Impact chips */}
-                  {e.impact && e.impact.length > 0 && (
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.1rem' }}>
-                      {e.impact.map(stat => (
-                        <div key={stat.label} style={{ background: 'var(--accent-bg)', border: '1px solid var(--border)', borderRadius: 4, padding: '0.4rem 0.8rem' }}>
-                          <span className="font-display" style={{ display: 'block', fontSize: '1.05rem', color: 'var(--accent)', lineHeight: 1.1 }}>{stat.value}</span>
-                          <span className="font-mono" style={{ display: 'block', fontSize: '0.56rem', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: 2 }}>{stat.label}</span>
+                  <div style={{ padding: '1.2rem 1.3rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <p className="font-mono" style={{ fontSize: '0.68rem', letterSpacing: '0.06em', color: 'var(--muted)', marginBottom: '0.5rem' }}>
+                      {e.startDate} – {e.endDate} · {e.location}
+                    </p>
+
+                    <h3 className="font-display" style={{ fontSize: '1.15rem', lineHeight: 1.2, marginBottom: '0.3rem' }}>{e.title}</h3>
+                    <p style={{ fontSize: '0.86rem', color: ac, fontWeight: 500, marginBottom: '0.7rem' }}>{e.company}</p>
+
+                    <p style={{ fontSize: '0.84rem', color: 'var(--muted)', lineHeight: 1.65, flex: 1, marginBottom: '1rem' }}>{e.context}</p>
+
+                    {/* IMPACT preview */}
+                    {previewImpact && previewImpact.length > 0 && (
+                      <div style={{ marginBottom: '1rem' }}>
+                        <p className="font-mono" style={{ fontSize: '0.6rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: ac, marginBottom: '0.5rem' }}>
+                          Impact
+                        </p>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                          {previewImpact.map(stat => (
+                            <div key={stat.label} style={{ background: bg, border: '1px solid var(--border)', borderRadius: 4, padding: '0.35rem 0.7rem' }}>
+                              <span className="font-display" style={{ display: 'block', fontSize: '0.95rem', color: ac, lineHeight: 1.1 }}>{stat.value}</span>
+                              <span className="font-mono" style={{ display: 'block', fontSize: '0.52rem', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: 2 }}>{stat.label}</span>
+                            </div>
+                          ))}
                         </div>
+                      </div>
+                    )}
+
+                    {/* Preview bullets */}
+                    <ul style={{ listStyle: 'none', marginBottom: '1rem' }}>
+                      {previewBullets.map((b, bi) => (
+                        <li key={bi} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.8rem', color: 'var(--muted)', lineHeight: 1.5, marginBottom: '0.25rem' }}>
+                          <span style={{ width: 5, height: 5, borderRadius: '50%', background: ac, flexShrink: 0, marginTop: '0.38rem' }} />
+                          <span>{renderBoldMarkup(b)}</span>
+                        </li>
                       ))}
-                    </div>
-                  )}
+                    </ul>
 
-                  {/* Grouped bullets */}
-                  {e.groups.map(group => (
-                    <div key={group.groupLabel} style={{ marginBottom: '1rem' }}>
-                      <p className="font-mono" style={{ fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '0.4rem' }}>
-                        {group.groupLabel}
-                      </p>
-                      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                        {group.bullets.map((bullet, bi) => (
-                          <li key={bi} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.65 }}>
-                            <span style={{ flexShrink: 0, color: 'var(--muted)', fontFamily: 'monospace', fontSize: '0.8rem', marginTop: '0.12rem' }}>—</span>
-                            <span>{renderBoldMarkup(bullet)}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    {/* Footer */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border)', paddingTop: '0.75rem' }}>
+                      <span className="font-mono" style={{ fontSize: '0.65rem', letterSpacing: '0.08em', color: 'var(--muted)' }}>
+                        {e.technologies.length} technologies
+                      </span>
+                      <span className="font-mono" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: ac, textTransform: 'uppercase' }}>
+                        Details →
+                      </span>
                     </div>
-                  ))}
-
-                  {/* Tech tags */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginTop: '0.6rem' }}>
-                    {e.technologies.map(tech => (
-                      <span key={tech} className="tag">{tech}</span>
-                    ))}
                   </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 600px) {
-          #experience .max-w-6xl div[style*="grid-template-columns"] {
-            grid-template-columns: 1fr !important;
-            gap: 0.6rem !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
